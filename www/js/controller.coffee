@@ -7,7 +7,7 @@ angular
 		$scope.env = env
 		$scope.navigator = navigator
 		
-	.controller 'GenKeyPairCtrl', ($scope, collection, $location, resources, userList) ->
+	.controller 'GenKeyPairCtrl', ($scope) ->
 		_.extend $scope,
 			test: 'testing'
 
