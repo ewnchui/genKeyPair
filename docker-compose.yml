@@ -1,0 +1,30 @@
+version: '2'
+services:
+  keypair_mongo:
+    hostname: keypair_mongo
+    container_name: keypair_mongo
+    image: mongo
+    ports:
+      - 27017
+    volumes:
+      - ${COMPOSEROOT}/genKeyPair_data:/data/db 
+    command: mongod --directoryperdb
+    env_file:
+      - ../.env
+    
+  genKeyPair:
+    hostname: genKeyPair
+    container_name: genKeyPair
+    depends_on:
+      - keypair_mongo
+    image: ewnchui/genKeyPair
+    ports:
+      - 8023:1337
+      - 8024:8080
+    entrypoint: top -b -d 1000  
+    volumes:
+      - /etc/ssl/certs:/etc/ssl/certs
+      - /usr/local/share/ca-certificates:/usr/local/share/ca-certificates
+      - ${COMPOSEROOT}/genKeyPair:/usr/src/app
+    env_file:
+      - ./.env      

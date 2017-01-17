@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>genKeyPair</title>
+    
+	<link rel="icon" type="image/png" href="img/icon.jpg" />
+    <link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/ionic.app.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+             
+	<!-- util.auth -->
+	<script type="text/javascript" src="lib/sails.io.js/dist/sails.io.js"></script>
+	<script type="text/javascript">
+			io.sails.autoConnect = false;
+	</script> 	
+ 
+    <!-- your app's js -->
+    <script src="js/index.js"></script>
+
+  </head>
+
+  <body ng-app="starter">
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>
