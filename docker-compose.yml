@@ -14,10 +14,10 @@ services:
     
   genKeyPair:
     hostname: genKeyPair
-    container_name: genKeyPair
+    container_name: genkeypair
     depends_on:
       - keypair_mongo
-    image: ewnchui/genKeyPair
+    image: ewnchui/genkeypair
     ports:
       - 8023:1337
       - 8024:8080

@@ -10,23 +10,22 @@ angular.module 'starter', ['ionic', 'starter.controller', 'starter.model', 'Acti
 			if (window.cordova && window.cordova.plugins.Keyboard)
 				cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true)
 			if (window.StatusBar)
-				StatusBar.styleDefault()								
-	.run (editableOptions) ->
-		editableOptions.theme = 'bs3'
+				StatusBar.styleDefault()							
+				
 	.config ($stateProvider, $urlRouterProvider) ->
 		$stateProvider.state 'app',
 			url: ""
 			abstract: true
 			templateUrl: "templates/menu.html"
-
-		$stateProvider.state 'app.genKeyPair',
-			url: "/genKeyPair"
+			
+		$stateProvider.state 'app.genkeypair',
+			url: "/genkeypair"
 			cache: false
 			views:
 				'menuContent':
-					templateUrl: "templates/keyPair/list.html"
+					templateUrl: "templates/genkeypair/list.html"
 					controller: 'GenKeyPairCtrl'
 			resolve:
 				resources: 'resources'
 
-		$urlRouterProvider.otherwise('/genKeyPair')
+		$urlRouterProvider.otherwise('/genkeypair')

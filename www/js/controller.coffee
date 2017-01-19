@@ -10,4 +10,3 @@ angular
 	.controller 'GenKeyPairCtrl', ($scope) ->
 		_.extend $scope,
 			test: 'testing'
-

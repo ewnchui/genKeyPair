@@ -1,34 +1,30 @@
-agent = require 'https-proxy-agent'
+io.sails.url = 'http://10.30.224.82:8023'
+io.sails.path = "/genkeypair/socket.io"
+io.sails.useCORSRouteToGetCookie = false
 
 module.exports =
-	hookTimeout:	400000
-	
-	port:			1337
+	isMobile: ->
+		/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+	isNative: ->
+		/^file/i.test(document.URL)
+	platform: ->
+		if @isNative() then 'mobile' else 'browser'
+	authUrl:	'https://mob.myvnc.com'
+
+	serverUrl: (path = @path) ->
+		"https://mob.myvnc.com/#{@path}"
+		
+	path: 'genkeypair'
+		
+	server:
+		rest:
+			urlRoot:	'https://mob.myvnc.com/org'
+		io:
+			urlRoot:	'https://mob.myvnc.com/im.app'
 	
 	oauth2:
-		
-		verifyURL:			"https://mob.myvnc.com/org/oauth2/verify/"
-		tokenURL:			"https://mob.myvnc.com/org/oauth2/token/"
-		scope:				["https://mob.myvnc.com/org/users"]
-
-	promise:
-		timeout:	10000 # ms
-
-	models:
-		connection: 'mongo'
-		migrate:	'alter'
-	
-	connections:
-		mongo:
-			adapter:	'sails-mongo'
-			driver:		'mongodb'
-			host:		'keypair_mongo'
-			port:		27017
-			user:		''
-			password:	''
-			database:	'keyPair'	
-			
-	log:
-		level: 'silly'
-		
-			
+		opts:
+			authUrl: "https://mob.myvnc.com/org/oauth2/authorize/"
+			response_type:	"token"
+			scope:			"https://mob.myvnc.com/org/users"
+			client_id:		'genkeypair.dev'					
