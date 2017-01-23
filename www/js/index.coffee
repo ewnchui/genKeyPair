@@ -13,7 +13,6 @@ if env.isNative()
 require 'ngCordova'
 require 'angular-activerecord'
 require 'angular-http-auth'
-require 'ng-file-upload'
 require 'tagDirective'
 require 'angular'
 require 'angular-animate'

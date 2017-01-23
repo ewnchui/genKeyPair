@@ -33,7 +33,8 @@
     "underscore": "~1.8.2",
     "ionic": "driftyco/ionic-bower#1.3.1",
     "angular-file-saver": "^1.1.2",
-    "angular-filter": "~0.5.14"
+    "angular-filter": "~0.5.14",
+    "cordova-promise-fs": "~1.1.1"
   },
   "devDependencies": {
     "ngCordova": "~0.1.12-alpha",
