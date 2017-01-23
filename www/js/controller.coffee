@@ -32,6 +32,7 @@ angular
 							Promise.reject err
 		
 		value = fileExist(file)
+	
 		
 		_.extend $scope,
 			pair: keypair()
