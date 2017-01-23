@@ -20,7 +20,6 @@ angular
 			concurrency:	3 # how many concurrent uploads/downloads?
 			Promise: 		require 'bluebird'
 		
-		
 		fileExist = (path) ->
 			new Promise (resolve, reject) ->	
 				fs = CordovaPromiseFS opts
