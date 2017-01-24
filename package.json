@@ -61,9 +61,9 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/ewnchui/genKeyPair.git"
+    "url": "git://github.com/dorissschoi/genKeyPair.git"
   },
-  "author": "ewnchui",
+  "author": "dorissschoi",
   "license": "",
   "cordovaPlugins": [
     "cordova-plugin-device",

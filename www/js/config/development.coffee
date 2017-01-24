@@ -1,5 +1,5 @@
-io.sails.url = 'http://10.30.224.82:8023'
-io.sails.path = "/genkeypair/socket.io"
+io.sails.url = 'https://app.ogcio.gov.hk'
+io.sails.path = "/im.app/socket.io"
 io.sails.useCORSRouteToGetCookie = false
 
 module.exports =
@@ -9,22 +9,14 @@ module.exports =
 		/^file/i.test(document.URL)
 	platform: ->
 		if @isNative() then 'mobile' else 'browser'
-	authUrl:	'https://mob.myvnc.com'
+	authUrl:	'https://app.ogcio.gov.hk'
 
-	serverUrl: (path = @path) ->
-		"https://mob.myvnc.com/#{@path}"
-		
 	path: 'genkeypair'
-		
-	server:
-		rest:
-			urlRoot:	'https://mob.myvnc.com/org'
-		io:
-			urlRoot:	'https://mob.myvnc.com/im.app'
-	
+
 	oauth2:
+		authUrl: "#{@authUrl}/auth/oauth2/authorize/"
 		opts:
-			authUrl: "https://mob.myvnc.com/org/oauth2/authorize/"
-			response_type:	"token"
-			scope:			"https://mob.myvnc.com/org/users"
-			client_id:		'genkeypair.dev'					
+			authUrl: "https://app.ogcio.gov.hk/auth/oauth2/authorize/"
+			response_type:  "token"
+			scope: 'User'
+			client_id: 'genkeypairDEV'								
