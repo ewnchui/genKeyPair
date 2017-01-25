@@ -4,7 +4,7 @@ module.exports =
 			'*':		false
 			find:		['isAuth']
 			findOne:	['isAuth']			
-			create:		['isAuth', 'setCreatedBy']
+			create:		['isAuth', 'setCreatedBy', 'setExpiryDate']
 		UserController:
 			'*':		false
 			find:		['isAuth']

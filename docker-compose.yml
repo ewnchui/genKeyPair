@@ -2,7 +2,7 @@
 version: '2'
 services:
   genKeyPair_doris:
-    image: ewnchui/genkeypair
+    image: dorissschoi/genkeypair
     hostname: genKeyPair_doris
     container_name: genkeypair_doris    
     ports:

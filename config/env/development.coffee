@@ -26,4 +26,5 @@ module.exports =
 	log:
 		level: 'silly'
 		
+	publicKeyYear: 2
 			

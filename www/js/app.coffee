@@ -42,16 +42,18 @@ angular.module 'starter', ['ionic', 'starter.controller', 'starter.model', 'Acti
 					ret = new resources.Cert()	
 
 		$stateProvider.state 'app.List',
-			url: "/genkeypair/list"
+			url: "/genkeypair/list?createdBy"
 			cache: false
 			views:
 				'menuContent':
 					templateUrl: "templates/genkeypair/list.html"
 					controller: 'ListCtrl'
 			resolve:
+				createdBy: ($stateParams) ->
+					return $stateParams.createdBy
 				resources: 'resources'	
-				collection: (resources) ->
+				collection: (resources, createdBy) ->
 					ret = new resources.CertList()
-					ret.$fetch()					
+					ret.$fetch({params: {createdBy: createdBy}})					
 					
 		$urlRouterProvider.otherwise('/genkeypair/list')
