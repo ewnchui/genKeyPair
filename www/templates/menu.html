@@ -15,6 +15,9 @@
         <ion-item nav-clear menu-close href="#/genkeypair/create">
           create
         </ion-item>
+        <ion-item nav-clear menu-close href="#/genkeypair/list?createdBy=me">
+          my public key
+        </ion-item>
        
         <ion-item nav-clear menu-close ng-if="env.isNative()" ng-click="navigator.app.exitApp()">
           Exit

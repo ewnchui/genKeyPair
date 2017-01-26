@@ -2,7 +2,7 @@ module.exports =
 	policies:
 		CertController:
 			'*':		false
-			find:		['isAuth']
+			find:		['isAuth', 'genkeypair/resolveMe']
 			findOne:	['isAuth']			
 			create:		['isAuth', 'setCreatedBy', 'setExpiryDate']
 		UserController:
