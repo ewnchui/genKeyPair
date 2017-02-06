@@ -1,12 +1,10 @@
-<ion-view>
-	<ion-nav-buttons class="item-input-inset">
-	    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-        </button>
-	    <h1 class='title'>Generate Key Pair</h1>
-	</ion-nav-buttons>
-	<ion-content>
-		<div>{{pair.private}}</div>
-		<p></p>
-		<div>{{pair.public}}</div>
-	</ion-content>
-</ion-view>
+<ion-header-bar class="item-input-inset">
+    <button class="button button-icon button-clear ion-navicon button-stable" menu-toggle="left">
+    </button>
+    <h1 class='title'>
+    	Public Key List
+    </h1>
+    <button class="button ion-plus-round button-clear button-stable" ui-sref="app.create"></button>  
+</ion-header-bar>
+
+<ng-include src="'templates/genkeypair/item.html'"></ng-include>

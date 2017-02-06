@@ -1,30 +1,32 @@
+
 version: '2'
 services:
-  keypair_mongo:
-    hostname: keypair_mongo
-    container_name: keypair_mongo
-    image: mongo
+  genKeyPair_doris:
+    image: dorissschoi/genkeypair
+    hostname: genKeyPair_doris
+    container_name: genkeypair_doris    
     ports:
-      - 27017
+      - 8042:1337
+      - 8043:8080
     volumes:
-      - ${COMPOSEROOT}/genKeyPair_data:/data/db 
-    command: mongod --directoryperdb
-    env_file:
-      - ../.env
-    
-  genKeyPair:
-    hostname: genKeyPair
-    container_name: genkeypair
-    depends_on:
-      - keypair_mongo
-    image: ewnchui/genkeypair
-    ports:
-      - 8023:1337
-      - 8024:8080
-    entrypoint: top -b -d 1000  
-    volumes:
+      - ${COMPOSEROOT}/genKeyPair/config/env/development.coffee:/usr/src/app/config/env/development.coffee
+      - ${COMPOSEROOT}/genKeyPair/config/env/development.coffee:/usr/src/app/config/env/production.coffee
+      - ${COMPOSEROOT}/genKeyPair/www/js/config/development.coffee:/usr/src/app/www/js/config/development.coffee
+      - ${COMPOSEROOT}/genKeyPair/www/js/config/development.coffee:/usr/src/app/www/js/config/production.coffee
       - /etc/ssl/certs:/etc/ssl/certs
       - /usr/local/share/ca-certificates:/usr/local/share/ca-certificates
-      - ${COMPOSEROOT}/genKeyPair82:/usr/src/app
+      - ${COMPOSEROOT}/genKeyPair/entrypoint.sh:/usr/src/app/entrypoint.sh
+      - ${COMPOSEROOT}/genKeyPair:/usr/src/app
+      
+      
     env_file:
-      - ./.env      
+      - ./.env
+    external_links:
+      - todoactiviti_mongo
+    networks:
+      - todoactivitimongo_default
+    entrypoint: top -b -d 1000          
+
+networks:
+  todoactivitimongo_default:
+    external: true       

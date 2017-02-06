@@ -4,14 +4,12 @@ module.exports =
 	hookTimeout:	400000
 	
 	port:			1337
-	
+
 	oauth2:
-		
-		verifyURL:			"https://mob.myvnc.com/org/oauth2/verify/"
-		tokenURL:			"https://mob.myvnc.com/org/oauth2/token/"
-		scope:				["https://mob.myvnc.com/org/users"]
-		userURL:			"https://mob.myvnc.com/org/api/users/"
-				
+		verifyURL:			"https://app.ogcio.gov.hk/auth/oauth2/verify/"
+		tokenURL:			"https://app.ogcio.gov.hk/auth/oauth2/token/"
+		scope: ['User']
+						
 	promise:
 		timeout:	10000 # ms
 
@@ -23,13 +21,10 @@ module.exports =
 		mongo:
 			adapter:	'sails-mongo'
 			driver:		'mongodb'
-			host:		'keypair_mongo'
-			port:		27017
-			user:		''
-			password:	''
-			database:	'keypair'	
-			
+			url: 'mongodb://todoactiviti_mongo/genKeyPair' #dev
+						
 	log:
 		level: 'silly'
 		
+	publicKeyYear: 2
 			

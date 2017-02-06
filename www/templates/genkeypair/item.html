@@ -1,0 +1,19 @@
+<ion-content class="">	
+	<ion-list>
+	
+	<ion-item ng-repeat="model in collection.models | orderBy:['expiryDate']  " 
+	item="item" class="item-avatar">
+       <div class="row">
+			<div class="col">
+        
+			<i class="item-image icon-circle activitiIcon ion-ios-person"></i>
+			<h2>{{model.createdBy}}, {{ model.expiryDate | date: 'dd-MM-yyyy' }}</h2>
+			
+		</div>
+		</div>
+	</ion-item>	
+	
+	</ion-list>
+	<ion-infinite-scroll ng-if="collection.state.skip < collection.state.count" on-infinite="loadMore()">
+	</ion-infinite-scroll>	
+</ion-content>

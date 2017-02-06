@@ -23,9 +23,37 @@ angular.module 'starter', ['ionic', 'starter.controller', 'starter.model', 'Acti
 			cache: false
 			views:
 				'menuContent':
-					templateUrl: "templates/genkeypair/list.html"
+					templateUrl: "templates/genkeypair/create.html"
 					controller: 'GenKeyPairCtrl'
 			resolve:
 				resources: 'resources'
 
-		$urlRouterProvider.otherwise('/genkeypair')
+		$stateProvider.state 'app.create',
+			url: "/genkeypair/create"
+			cache: false
+			views:
+				'menuContent':
+					templateUrl: "templates/genkeypair/create.html"
+					controller: 'CertCtrl'
+			resolve:
+				resources: 'resources'
+				
+				model: (resources) ->
+					ret = new resources.Cert()	
+
+		$stateProvider.state 'app.List',
+			url: "/genkeypair/list?createdBy"
+			cache: false
+			views:
+				'menuContent':
+					templateUrl: "templates/genkeypair/list.html"
+					controller: 'ListCtrl'
+			resolve:
+				createdBy: ($stateParams) ->
+					return $stateParams.createdBy
+				resources: 'resources'	
+				collection: (resources, createdBy) ->
+					ret = new resources.CertList()
+					ret.$fetch({params: {createdBy: createdBy}})					
+					
+		$urlRouterProvider.otherwise('/genkeypair/list')
