@@ -25,6 +25,7 @@
     "lodash": "^3.10.1",
     "mocha": "^2.5.3",
     "needle": "^1.4.3",
+    "node-forge": "^0.7.0",
     "passport": "^0.3.2",
     "passport-http-bearer": "^1.0.1",
     "querystring": "^0.2.0",
@@ -32,6 +33,7 @@
     "sails-hook-requestlogger-file": "^2.0.5",
     "sails-mongo": "^0.12.2",
     "shelljs": "^0.5.3",
+    "stream-to-string": "^1.1.0",
     "supertest": "^2.0.1",
     "vinyl-source-stream": "^1.1.0"
   },
