@@ -1,7 +1,7 @@
 FROM node
 
 ENV VER=${VER:-master} \
-    REPO=https://github.com/twhtanghk/genKeyPair \
+    REPO=https://github.com/ewnchui/genKeyPair \
     APP=/usr/src/app
 
 RUN apt-get update \  
