@@ -13,7 +13,7 @@ WORKDIR /usr/src/app
 
 # set emailAddress and StateOrProvinceName of openssl config
 # as required to match and optional respectively
-RUN sed 's/^emailAddress.*=.*optional$/emailAddress = match/g' < /etc/ssl/openssl.cnf | sed 's/^stateOrProvinceName.*=match$/stateOrProvinceName = optional/g' >/tmp/$$ \
+RUN sed 's/^emailAddress.*=.*optional$/emailAddress = match/g' < /etc/ssl/openssl.cnf | sed 's/^stateOrProvinceName.*=.*match$/stateOrProvinceName = optional/g' >/tmp/$$ \
 &&  mv /tmp/$$ /etc/ssl/openssl.cnf \
 &&  npm install \
 &&  node_modules/.bin/bower install --allow-root
