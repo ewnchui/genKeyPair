@@ -1,18 +1,18 @@
-FROM node:4-slim
+FROM node
+
+ENV VER=${VER:-master} \
+    REPO=https://github.com/twhtanghk/genKeyPair \
+    APP=/usr/src/app
+
+RUN apt-get update \  
+&&  apt-get -y install git \
+&&  apt-get clean \
+&&  git clone -b $VER $REPO $APP
 
 WORKDIR /usr/src/app
 
-ADD https://github.com/ewnchui/genKeyPair/archive/master.tar.gz /tmp
-
-RUN apt-get update && \  
-	apt-get -y install git && \
-	apt-get clean && \
-	cd /usr/src/app && \
-	tar --strip-components=1 -xzf /tmp/master.tar.gz && \
-	rm /tmp/master.tar.gz && \
-	npm install bower coffee-script -g && \
-	npm install && \
-	bower install --allow-root
+RUN npm install \
+&&  node_modules/.bin/bower install --allow-root
 	
 EXPOSE 1337
 
