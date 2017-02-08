@@ -3,8 +3,13 @@
     "modules": {}
   },
   "hooks": {
-    "grunt": false,
     "csrf": false,
+    "grunt": false,
+    "i18n": false,
     "session": false
+    "views": false,
+  },
+  "paths": {
+    "public": "www
   }
 }
