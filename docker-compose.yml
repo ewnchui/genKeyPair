@@ -4,7 +4,7 @@ services:
     image: mongo
     ports:
       - 27017
-    command: mongod --directorydb
+    command: mongod --directoryperdb
 
   pki:
     depends_on:
