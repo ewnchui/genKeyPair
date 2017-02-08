@@ -6,10 +6,10 @@
     "csrf": false,
     "grunt": false,
     "i18n": false,
-    "session": false
-    "views": false,
+    "session": false,
+    "views": false
   },
   "paths": {
-    "public": "www
+    "public": "www"
   }
 }
