@@ -1,3 +1,2 @@
 module.exports = 
-	routes: {}
-			
+  routes: {}

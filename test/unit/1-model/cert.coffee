@@ -1,6 +1,6 @@
 env = require '../../env.coffee'
 Promise = require 'bluebird'
-forge = require 'forge'
+forge = require 'node-forge'
 
 describe 'model', ->
   createdBy = null
@@ -14,14 +14,21 @@ describe 'model', ->
         createdBy = user
         
   it 'create cert', ->
-    keys = forge.pki.generateKeyPair parseInt process.env.KEY_LEN
+    keys = forge.pki.rsa.generateKeyPair parseInt process.env.KEY_LEN
+    publicKey = forge.pki.publicKeyToPem keys.publicKey
     sails.models.cert
       .create
-        publicKey: keys.publicKey
+        publicKey: publicKey
         createdBy: createdBy
       .then (c) ->
         cert = c
 
   it 'delete cert', ->
     sails.models.cert
-      .destroy cert
+      .destroy id: cert.id
+      .toPromise()
+
+  it 'delete user', ->
+    sails.models.user
+      .destroy email: createdBy.email
+      .toPromise()

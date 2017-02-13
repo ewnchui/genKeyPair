@@ -12,3 +12,7 @@ module.exports =
       type: 'string'
       primaryKey: true
       required: true
+
+    certs:
+      collection: 'cert'
+      via: 'createdBy'

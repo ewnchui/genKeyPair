@@ -27,6 +27,7 @@
     "mocha": "^2.5.3",
     "needle": "^1.4.3",
     "node-forge": "^0.7.0",
+    "oauth2_client": "0.0.1",
     "passport": "^0.3.2",
     "passport-http-bearer": "^1.0.1",
     "querystring": "^0.2.0",
@@ -35,7 +36,8 @@
     "sails-mongo": "^0.12.2",
     "shelljs": "^0.5.3",
     "stream-to-string": "^1.1.0",
-    "supertest": "^2.0.1",
+    "supertest": "^3.0.0",
+    "supertest-as-promised": "^4.0.2",
     "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
