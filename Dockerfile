@@ -1,18 +1,22 @@
-FROM node:4-slim
+FROM node
+
+ENV VER=${VER:-master} \
+    REPO=https://github.com/ewnchui/genKeyPair \
+    APP=/usr/src/app
+
+RUN apt-get update \  
+&&  apt-get -y install git openssl \
+&&  apt-get clean \
+&&  git clone -b $VER $REPO $APP
 
 WORKDIR /usr/src/app
 
-ADD https://github.com/ewnchui/genKeyPair/archive/master.tar.gz /tmp
-
-RUN apt-get update && \  
-	apt-get -y install git && \
-	apt-get clean && \
-	cd /usr/src/app && \
-	tar --strip-components=1 -xzf /tmp/master.tar.gz && \
-	rm /tmp/master.tar.gz && \
-	npm install bower coffee-script -g && \
-	npm install && \
-	bower install --allow-root
+# set emailAddress and StateOrProvinceName of openssl config
+# as required to match and optional respectively
+RUN sed 's/^emailAddress.*=.*optional$/emailAddress = match/g' < /etc/ssl/openssl.cnf | sed 's/^stateOrProvinceName.*=.*match$/stateOrProvinceName = optional/g' >/tmp/$$ \
+&&  mv /tmp/$$ /etc/ssl/openssl.cnf \
+&&  npm install \
+&&  node_modules/.bin/bower install --allow-root
 	
 EXPOSE 1337
 

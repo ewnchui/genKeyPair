@@ -1,11 +1,11 @@
 module.exports = 
-	policies:
-		CertController:
-			'*':		false
-			find:		['isAuth', 'genkeypair/resolveMe']
-			findOne:	['isAuth']			
-			create:		['isAuth', 'setCreatedBy', 'setExpiryDate']
-		UserController:
-			'*':		false
-			find:		['isAuth']
-			findOne:	['isAuth', 'user/me']			
+  policies:
+    CertController:
+      '*': false
+      find: true	# return list of cert including valid or invalid cert
+      findOne: true     # return cert with specified id
+      create: ['isAuth', 'setCreatedBy']
+    UserController:
+      '*': false
+      find: true
+      findOne: true	# return user with specified id
